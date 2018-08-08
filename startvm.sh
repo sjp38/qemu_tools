@@ -5,7 +5,7 @@ cd $BINDIR
 
 if [ $# -lt 1 ]
 then
-	echo "Usage: $0 <path to disk file> [<nr_cores> [ram size]]"
+	echo "Usage: $0 <path to disk file> [<nr_cores> [<ram size> [ssh port]]]"
 	exit 1
 fi
 
@@ -23,7 +23,12 @@ then
 	SZ_RAM=$3
 fi
 
-echo cores: $NR_CORES, ram: $SZ_RAM
+SSH_PORT=2242
+if [ $# -gt 3 ]
+then
+	SSH_PORT=$4
+fi
 
 ./bin/x86_64-softmmu/qemu-system-x86_64 -m $SZ_RAM -smp $NR_CORES -enable-kvm \
-	-drive if=virtio,file=$DISK,cache=none -redir tcp:2242::22 -nographic
+	-drive if=virtio,file=$DISK,cache=none -redir tcp:$SSH_PORT::22 \
+	-nographic
