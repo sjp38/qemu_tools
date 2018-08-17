@@ -1,0 +1,29 @@
+qemu_tools
+==========
+
+Set of simple tools for qemu usage.  Specialized for kernel hacking using
+qemu-kvm and would not fit for general usecase.
+
+
+startvm.sh
+==========
+
+`startvm.sh` creates new virtual machine using qemu-kvm.  It's usage is simple
+as below:
+
+```
+Usage: ./startvm.sh <path to disk file> [<nr_cores> [<ram size> [ssh port]]]
+```
+
+`<nr_cores>`: Number of virtual CPUs for the virtual machine.
+`<ram size>`: Size of ram for the virtual machine.  You can use 'G' or 'M'
+	      suffix for Gibi-bytes and Mibi-bytes.
+`<ssh port>`: The tool forward 22 port of the virtual machine to this port of
+	      host machine.  If you want ssh connection to the virtual machine,
+	      you may use this port.
+
+
+Author
+======
+
+SeongJae Park <sj38.park@gmail.com>
