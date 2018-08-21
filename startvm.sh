@@ -29,6 +29,13 @@ then
 	SSH_PORT=$4
 fi
 
+QEMU=./bin/x86_64-softmmu/qemu-system-x86_64
+if [ ! -f $QEMU ]
+then
+	echo "Looks like QEMU not installed.  Do ./install.sh first"
+	exit 1
+fi
+
 ./bin/x86_64-softmmu/qemu-system-x86_64 -m $SZ_RAM -smp $NR_CORES -enable-kvm \
 	-drive if=virtio,file=$DISK,cache=none -redir tcp:$SSH_PORT::22 \
 	-nographic
