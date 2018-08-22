@@ -1,5 +1,8 @@
 #!/bin/bash
 
+BINDIR=`dirname $0`
+cd $BINDIR
+
 git clone git://git.qemu-project.org/qemu.git
 cd qemu
 git checkout v3.0.0
