@@ -3,7 +3,10 @@
 BINDIR=`dirname $0`
 cd $BINDIR
 
-git clone git://git.qemu-project.org/qemu.git
+if [ ! -d qemu ]
+then
+	git clone git://git.qemu-project.org/qemu.git
+fi
 cd qemu
 git checkout v3.0.0
 
