@@ -11,13 +11,13 @@ fi
 
 DISK=$1
 
-NR_CORES=16
+NR_CORES=$((`grep "^processor" /proc/cpuinfo | wc -l` / 2))
 if [ $# -gt 1 ]
 then
 	NR_CORES=$2
 fi
 
-SZ_RAM=32G
+SZ_RAM=$(( `grep "^MemTotal" /proc/meminfo | awk '{print $2}'` / 4 ))K
 if [ $# -gt 2 ]
 then
 	SZ_RAM=$3
