@@ -5,9 +5,25 @@ cd $BINDIR
 
 if [ $# -lt 1 ]
 then
-	echo "Usage: $0 <path to disk file> [<nr_cores> [<ram size> [ssh port]]]"
+	echo "Usage: $0 [OPTIONS] <path to disk file> [<nr_cores> [<ram size> [ssh port]]]"
+	echo "  --graphic	start vm in graphic mode"
 	exit 1
 fi
+
+GRAPHIC="-nographic"
+while true; do
+	case $1 in
+	"--graphic")
+		GRAPHIC=""
+		shift
+		continue
+		;;
+	*)
+		break
+		;;
+	esac
+done
+
 
 DISK=$1
 
@@ -38,4 +54,4 @@ fi
 
 $QEMU -m $SZ_RAM -smp $NR_CORES -enable-kvm \
 	-drive if=virtio,file=$DISK,cache=none -redir tcp:$SSH_PORT::22 \
-	-nographic
+	$GRAPHIC
