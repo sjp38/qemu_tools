@@ -7,15 +7,22 @@ if [ $# -lt 1 ]
 then
 	echo "Usage: $0 [OPTIONS] <path to disk file> [<nr_cores> [<ram size> [ssh port]]]"
 	echo "  --graphic	start vm in graphic mode"
+	echo "  --sshport	port for ssh server"
 	exit 1
 fi
 
 GRAPHIC="-nographic"
+SSH_PORT=2242
 while true; do
 	case $1 in
 	"--graphic")
 		GRAPHIC=""
 		shift
+		continue
+		;;
+	"--sshport")
+		SSH_PORT=$2
+		shift 2
 		continue
 		;;
 	*)
@@ -37,12 +44,6 @@ SZ_RAM=$(( `grep "^MemTotal" /proc/meminfo | awk '{print $2}'` / 4 ))K
 if [ $# -gt 2 ]
 then
 	SZ_RAM=$3
-fi
-
-SSH_PORT=2242
-if [ $# -gt 3 ]
-then
-	SSH_PORT=$4
 fi
 
 QEMU=./bin/x86_64-softmmu/qemu-system-x86_64
