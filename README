@@ -5,6 +5,13 @@ Set of simple tools for qemu usage.  Specialized for kernel hacking using
 qemu-kvm and would not fit for general usecase.
 
 
+NOTE
+====
+
+This tool is based on 'Ubuntu 16.04 Server' only.  May not work well on other
+distributions.
+
+
 install.sh
 ==========
 
