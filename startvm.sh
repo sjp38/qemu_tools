@@ -5,7 +5,7 @@ cd $BINDIR
 
 if [ $# -lt 1 ]
 then
-	echo "Usage: $0 [OPTIONS] <path to disk file> [<nr_cores> [<ram size> [ssh port]]]"
+	echo "Usage: $0 [OPTIONS] <path to disk file> [<nr_cores> [<ram size>]]"
 	echo "  --graphic	start vm in graphic mode"
 	echo "  --sshport	port for ssh server"
 	exit 1
