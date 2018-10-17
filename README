@@ -5,6 +5,13 @@ Set of simple tools for qemu usage.  Specialized for kernel hacking using
 qemu-kvm and would not fit for general usecase.
 
 
+install.sh
+==========
+
+`install.sh` fetches qemu v3.0.0 source code and builds it.  It also builds
+necessary packages.  Just type `./install.sh` on your command line.
+
+
 startvm.sh
 ==========
 
