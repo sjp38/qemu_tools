@@ -15,8 +15,9 @@ distributions.
 install.sh
 ==========
 
-`install.sh` fetches qemu v3.0.0 source code and builds it.  It also builds
-necessary packages.  Just type `./install.sh` on your command line.
+`install.sh` fetches source code of qemu v3.0.0 and builds it.  It also
+installs necessary packages.  Just type `./install.sh` on your command line.
+Other tools in this repository will not work without that.
 
 
 startvm.sh
