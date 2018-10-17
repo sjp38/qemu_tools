@@ -26,7 +26,9 @@ startvm.sh
 as below:
 
 ```
-Usage: ./startvm.sh <path to disk file> [<nr_cores> [<ram size> [ssh port]]]
+Usage: ./startvm.sh [OPTIONS] <path to disk file> [<nr_cores> [<ram size>]]
+  --graphic     start vm in graphic mode
+  --sshport     port for ssh server
 ```
 
 `<nr_cores>`: Number of virtual CPUs for the virtual machine.
@@ -34,7 +36,7 @@ Usage: ./startvm.sh <path to disk file> [<nr_cores> [<ram size> [ssh port]]]
 `<ram size>`: Size of ram for the virtual machine.  You can use 'G' or 'M'
 	      suffix for Gibi-bytes and Mibi-bytes.
 	      Defaults to 32G.
-`<ssh port>`: The tool forward 22 port of the virtual machine to this port of
+`--sshport`:  The tool forward 22 port of the virtual machine to this port of
 	      host machine.  If you want ssh connection to the virtual machine,
 	      you may use this port.
 	      Defaults to 2242.
