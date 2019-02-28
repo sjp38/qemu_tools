@@ -1,5 +1,6 @@
 #!/bin/bash
 
+CALL_DIR=`pwd`
 BINDIR=`dirname $0`
 cd $BINDIR
 
@@ -32,7 +33,7 @@ while true; do
 done
 
 
-DISK=$1
+DISK="$CALL_DIR/$1"
 
 NR_CORES=$((`grep "^processor" /proc/cpuinfo | wc -l` / 2))
 if [ $# -gt 1 ]
