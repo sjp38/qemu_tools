@@ -29,7 +29,7 @@ while true; do
 		continue
 		;;
 	"--cdrom")
-		CDROM="-cdrom $2"
+		CDROM="-cdrom $CALL_DIR/$2"
 		shift 2
 		continue
 		;;
