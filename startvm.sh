@@ -7,13 +7,15 @@ cd $BINDIR
 if [ $# -lt 1 ]
 then
 	echo "Usage: $0 [OPTIONS] <path to disk file> [<nr_cores> [<ram size>]]"
-	echo "  --graphic	start vm in graphic mode"
-	echo "  --sshport	port for ssh server"
+	echo "  --graphic       start vm in graphic mode"
+	echo "  --sshport       port for ssh server"
+	echo "  --cdrom         cdrom image"
 	exit 1
 fi
 
 GRAPHIC="-nographic"
 SSH_PORT=2242
+CDROM=""
 while true; do
 	case $1 in
 	"--graphic")
@@ -23,6 +25,11 @@ while true; do
 		;;
 	"--sshport")
 		SSH_PORT=$2
+		shift 2
+		continue
+		;;
+	"--cdrom")
+		CDROM="-cdrom $2"
 		shift 2
 		continue
 		;;
@@ -56,4 +63,4 @@ fi
 
 $QEMU -m $SZ_RAM -smp $NR_CORES -enable-kvm \
 	-drive if=virtio,file=$DISK,cache=none -redir tcp:$SSH_PORT::22 \
-	$GRAPHIC
+	$GRAPHIC $CDROM
