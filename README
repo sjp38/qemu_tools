@@ -44,6 +44,10 @@ Usage: ./startvm.sh [OPTIONS] <path to disk file> [<nr_cores> [<ram size>]]
 	      you may use this port.
 	      Defaults to 2242.
 `--cdrom`:    Start the virtual machine as specified cdrom image is inserted.
+              For installation CD images, please refer to
+              https://www.debian.org/releases/,
+              http://releases.ubuntu.com or
+              https://dl.fedoraproject.org/pub/fedora/linux/releases/
 
 
 Author
