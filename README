@@ -12,6 +12,19 @@ These tools are developed and tested for the 'Ubuntu 16.04 Server' only.  May
 not work well on other distributions.
 
 
+Simple Tutorial
+===============
+
+Below simple commands will give you a virtual machine environment!
+
+```
+$ ./install.sh
+$ ./mkimg.sh 32G my.disk
+$ wget http://releases.ubuntu.com/16.04/ubuntu-16.04.6-server-amd64.iso
+$ sudo ./startvm.sh --graphic --cdrom ubuntu-16.04.6-server-amd64.iso my.disk
+```
+
+
 install.sh
 ==========
 
