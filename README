@@ -8,8 +8,8 @@ qemu-kvm and would not fit for general usecase.
 NOTE
 ====
 
-This tool is based on 'Ubuntu 16.04 Server' only.  May not work well on other
-distributions.
+These tools are developed and tested for the 'Ubuntu 16.04 Server' only.  May
+not work well on other distributions.
 
 
 install.sh
