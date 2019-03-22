@@ -20,6 +20,20 @@ installs necessary packages.  Just type `./install.sh` on your command line.
 Other tools in this repository will not work without that.
 
 
+mkimg.sh
+========
+
+`mkimg.sh` make a qcow2 format disk image.  Usage is simple:
+
+```
+Usage: ./mkimg.sh <size> <image file path>
+```
+
+- `<size>`:	Size of the disk.  You may use 'G' for gibibytes.
+		(e.g., 32G for 32 GiB)
+`<image file path>`:	Path to the disk file that will be generated.
+
+
 startvm.sh
 ==========
 
