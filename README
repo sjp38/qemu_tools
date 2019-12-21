@@ -1,34 +1,34 @@
 qemu_tools
 ==========
 
-Set of simple tools for qemu usage.  Specialized for kernel hacking using
-qemu-kvm and would not fit for general usecase.
+Set of simple tools for qemu usage.  Because these tools are made for kernel
+hacking purpose, would not fit for general usecases.
 
 
 NOTE
 ====
 
-These tools are developed and tested for the 'Ubuntu 16.04 Server' only.  May
+These tools are developed and tested for the 'Ubuntu 18.04 Server' only.  May
 not work well on other distributions.
 
 
 Simple Tutorial
 ===============
 
-Below simple commands will give you a virtual machine environment!
+Below simple commands will give you a virtual machine environment.
 
 ```
 $ ./install.sh
 $ ./mkimg.sh 32G my.disk
-$ wget http://releases.ubuntu.com/16.04/ubuntu-16.04.6-server-amd64.iso
-$ sudo ./startvm.sh --graphic --cdrom ubuntu-16.04.6-server-amd64.iso my.disk
+$ wget http://releases.ubuntu.com/18.04/ubuntu-18.04.3-live-server-amd64.iso
+$ sudo ./startvm.sh --graphic --cdrom ubuntu-18.04.3-live-server-amd64.iso my.disk
 ```
 
 
 install.sh
 ==========
 
-`install.sh` fetches source code of qemu v3.0.0 and builds it.  It also
+`install.sh` fetches source code of qemu v4.2.0 and builds it.  It also
 installs necessary packages.  Just type `./install.sh` on your command line.
 Other tools in this repository will not work without that.
 

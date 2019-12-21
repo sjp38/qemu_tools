@@ -19,7 +19,7 @@ CDROM=""
 while true; do
 	case $1 in
 	"--graphic")
-		GRAPHIC=""
+		GRAPHIC="-display gtk"
 		shift
 		continue
 		;;
@@ -62,5 +62,6 @@ then
 fi
 
 $QEMU -m $SZ_RAM -smp $NR_CORES -enable-kvm \
-	-drive if=virtio,file=$DISK,cache=none -redir tcp:$SSH_PORT::22 \
+	-drive if=virtio,file=$DISK,cache=none \
+	-net user,hostfwd=tcp::$SSH_PORT-:22 -net nic \
 	$GRAPHIC $CDROM
