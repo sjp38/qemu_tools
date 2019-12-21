@@ -8,14 +8,14 @@ hacking purpose, would not fit for general usecases.
 NOTE
 ====
 
-These tools are developed and tested for the 'Ubuntu 18.04 Server' only.  May
+These tools are developed and tested on a 'Ubuntu 18.04 Server' host only.  May
 not work well on other distributions.
 
 
 Simple Tutorial
 ===============
 
-Below simple commands will give you a virtual machine environment.
+Below simple commands will give you a virtual machine.
 
 ```
 $ ./install.sh
@@ -30,13 +30,13 @@ install.sh
 
 `install.sh` fetches source code of qemu v4.2.0 and builds it.  It also
 installs necessary packages.  Just type `./install.sh` on your command line.
-Other tools in this repository will not work without that.
+Other tools in this repository would not work without that.
 
 
 mkimg.sh
 ========
 
-`mkimg.sh` make a qcow2 format disk image.  Usage is simple:
+`mkimg.sh` makes a `qcow2` format disk image.  Usage is simple:
 
 ```
 Usage: ./mkimg.sh <size> <image file path>
@@ -44,14 +44,14 @@ Usage: ./mkimg.sh <size> <image file path>
 
 - `<size>`:	Size of the disk.  You may use 'G' for gibibytes.
 		(e.g., 32G for 32 GiB)
-`<image file path>`:	Path to the disk file that will be generated.
+- `<image file path>`:	Path to the disk file that will be generated.
 
 
 startvm.sh
 ==========
 
-`startvm.sh` creates new virtual machine using qemu-kvm.  It's usage is simple
-as below:
+`startvm.sh` creates new virtual machine using qemu-kvm.  It's usage is as
+below:
 
 ```
 Usage: ./startvm.sh [OPTIONS] <path to disk file> [<nr_cores> [<ram size>]]
