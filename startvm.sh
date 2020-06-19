@@ -8,6 +8,7 @@ if [ $# -lt 1 ]
 then
 	echo "Usage: $0 [OPTIONS] <path to disk file> [<nr_cores> [<ram size>]]"
 	echo "  --graphic       start vm in graphic mode"
+	echo "  --curses        start vm in curses mode"
 	echo "  --sshport       port for ssh server"
 	echo "  --cdrom         cdrom image"
 	exit 1
@@ -20,6 +21,11 @@ while true; do
 	case $1 in
 	"--graphic")
 		GRAPHIC="-display gtk"
+		shift
+		continue
+		;;
+	"--curses")
+		GRAPHIC="-curses"
 		shift
 		continue
 		;;
