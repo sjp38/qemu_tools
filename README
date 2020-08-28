@@ -15,7 +15,8 @@ not work well on other distributions.
 Simple Tutorial
 ===============
 
-Below simple commands will give you a virtual machine.
+Below simple commands will give you a virtual machine with Ubuntu install
+prompt.
 
 ```
 $ ./install.sh
@@ -23,6 +24,10 @@ $ ./mkimg.sh 32G my.disk
 $ wget http://releases.ubuntu.com/18.04/ubuntu-18.04.3-live-server-amd64.iso
 $ sudo ./startvm.sh --graphic --cdrom ubuntu-18.04.3-live-server-amd64.iso my.disk
 ```
+
+If you have an OS installed disk file, say, `my.disk`, you can boot that:
+
+    $ sudo ./startvm.sh my.disk
 
 
 install.sh
