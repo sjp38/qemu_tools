@@ -61,6 +61,7 @@ below:
 ```
 Usage: ./startvm.sh [OPTIONS] <path to disk file> [<nr_cores> [<ram size>]]
   --graphic       start vm in graphic mode
+  --curses        start vm in curses mode
   --sshport       port for ssh server
   --cdrom         cdrom image
 ```
@@ -71,6 +72,7 @@ Usage: ./startvm.sh [OPTIONS] <path to disk file> [<nr_cores> [<ram size>]]
 	      suffix for Gibi-bytes and Mibi-bytes.
 	      Defaults to 32G.
 `--graphic`:  Start the virtual machine in graphic mode.
+`--curses`:   Start the virtual machine in curses mode.
 `--sshport`:  The tool forward 22 port of the virtual machine to this port of
 	      host machine.  If you want ssh connection to the virtual machine,
 	      you may use this port.
