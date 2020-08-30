@@ -12,22 +12,27 @@ These tools are developed and tested on a 'Ubuntu 18.04 Server' host only.  May
 not work well on other distributions.
 
 
-Simple Tutorial
+Getting Started
 ===============
 
 Below simple commands will give you a virtual machine with Ubuntu install
 prompt.
 
-```
-$ ./install.sh
-$ ./mkimg.sh 32G my.disk
-$ wget http://releases.ubuntu.com/18.04/ubuntu-18.04.3-live-server-amd64.iso
-$ sudo ./startvm.sh --graphic --cdrom ubuntu-18.04.3-live-server-amd64.iso my.disk
-```
+    $ ./install.sh
+    $ ./mkimg.sh 32G my.disk
+    $ wget http://releases.ubuntu.com/18.04/ubuntu-18.04.3-live-server-amd64.iso
+    $ sudo ./startvm.sh --graphic --cdrom ubuntu-18.04.3-live-server-amd64.iso my.disk
 
-If you have an OS installed disk file, say, `my.disk`, you can boot that:
+Above command install QEMU (line 1), create a 32GB-sized disk image (line 2),
+get Ubuntu 18.04 installation image file (line 3), and finally start a VM with
+the installation image and the disk image (line 4).  The Ubuntu 18.04
+installation image file could be changed.  You could find and use the link by
+yourself.
 
-    $ sudo ./startvm.sh my.disk
+Once you finished the installation, you will have an OS installed disk image.
+Or, you could simply get one from other people.  Then, you can boot it:
+
+    $ sudo ./startvm.sh <disk image file>
 
 
 install.sh
