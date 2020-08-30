@@ -72,10 +72,10 @@ Usage: ./startvm.sh [OPTIONS] <path to disk file> [<nr_cores> [<ram size>]]
 ```
 
 `<nr_cores>`: Number of virtual CPUs for the virtual machine.
-	      Defaults to 16.
+	      Defaults to 1/2 of host CPUs.
 `<ram size>`: Size of ram for the virtual machine.  You can use 'G' or 'M'
 	      suffix for Gibi-bytes and Mibi-bytes.
-	      Defaults to 32G.
+	      Defaults to 1/4 of host RAM.
 `--graphic`:  Start the virtual machine in graphic mode.
 `--curses`:   Start the virtual machine in curses mode.
 `--sshport`:  The tool forward 22 port of the virtual machine to this port of
