@@ -38,7 +38,7 @@ Or, you could simply get one from other people.  Then, you can boot it:
 install.sh
 ==========
 
-`install.sh` fetches source code of qemu v4.2.0 and builds it.  It also
+`install.sh` fetches source code of qemu v5.2.0 and builds it.  It also
 installs necessary packages.  Just type `./install.sh` on your command line.
 Other tools in this repository would not work without that.
 
