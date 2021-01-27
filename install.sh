@@ -4,14 +4,15 @@ BINDIR=`dirname $0`
 cd $BINDIR
 
 sudo apt install -y libglib2.0-dev libfdt-dev libpixman-1-dev zlib1g-dev \
-	libgtk-3-dev libncurses5-dev libncursesw5-dev
+	libgtk-3-dev libncurses5-dev libncursesw5-dev ninja-build
 
 if [ ! -d qemu ]
 then
 	git clone git://git.qemu-project.org/qemu.git
 fi
 cd qemu
-git checkout v4.2.0
+git remote update
+git checkout v5.2.0
 
 mkdir ../bin
 cd ../bin
