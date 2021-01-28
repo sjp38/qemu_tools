@@ -11,12 +11,14 @@ then
 	echo "  --curses        start vm in curses mode"
 	echo "  --sshport       port for ssh server"
 	echo "  --cdrom         cdrom image"
+	echo "  --monitor	monitor unix domain socket"
 	exit 1
 fi
 
 graphic="-nographic"
 ssh_port=2242
 cdrom=""
+monitor=""
 while true; do
 	case $1 in
 	"--graphic")
@@ -36,6 +38,11 @@ while true; do
 		;;
 	"--cdrom")
 		cdrom="-cdrom $call_dir/$2"
+		shift 2
+		continue
+		;;
+	"--monitor")
+		monitor="-monitor unix:$2,server,nowait"
 		shift 2
 		continue
 		;;
@@ -70,4 +77,4 @@ fi
 $qemu -m $sz_ram -smp $nr_cores -enable-kvm \
 	-drive if=virtio,file=$disk,cache=none \
 	-net user,hostfwd=tcp::$ssh_port-:22 -net nic \
-	$graphic $cdrom
+	$graphic $cdrom $monitor
