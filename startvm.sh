@@ -12,6 +12,7 @@ then
 	echo "  --sshport       port for ssh server"
 	echo "  --cdrom         cdrom image"
 	echo "  --monitor	monitor unix domain socket"
+	echo "  --qmp		qmp unix domain socket"
 	exit 1
 fi
 
@@ -19,6 +20,7 @@ graphic="-nographic"
 ssh_port=2242
 cdrom=""
 monitor=""
+qmp=""
 while true; do
 	case $1 in
 	"--graphic")
@@ -43,6 +45,11 @@ while true; do
 		;;
 	"--monitor")
 		monitor="-monitor unix:$2,server,nowait"
+		shift 2
+		continue
+		;;
+	"--qmp")
+		qmp="-qmp unix:$2,server,nowait"
 		shift 2
 		continue
 		;;
@@ -77,4 +84,4 @@ fi
 $qemu -m $sz_ram -smp $nr_cores -enable-kvm \
 	-drive if=virtio,file=$disk,cache=none \
 	-net user,hostfwd=tcp::$ssh_port-:22 -net nic \
-	$graphic $cdrom $monitor
+	$graphic $cdrom $monitor $qmp
