@@ -1,8 +1,8 @@
 #!/bin/bash
 
-CALL_DIR=`pwd`
-BINDIR=`dirname $0`
-cd $BINDIR
+call_dir=`pwd`
+bindir=`dirname $0`
+cd $bindir
 
 if [ $# -lt 1 ]
 then
@@ -14,28 +14,28 @@ then
 	exit 1
 fi
 
-GRAPHIC="-nographic"
-SSH_PORT=2242
-CDROM=""
+graphic="-nographic"
+ssh_port=2242
+cdrom=""
 while true; do
 	case $1 in
 	"--graphic")
-		GRAPHIC="-display gtk"
+		graphic="-display gtk"
 		shift
 		continue
 		;;
 	"--curses")
-		GRAPHIC="-curses"
+		graphic="-curses"
 		shift
 		continue
 		;;
 	"--sshport")
-		SSH_PORT=$2
+		ssh_port=$2
 		shift 2
 		continue
 		;;
 	"--cdrom")
-		CDROM="-cdrom $CALL_DIR/$2"
+		cdrom="-cdrom $call_dir/$2"
 		shift 2
 		continue
 		;;
@@ -46,28 +46,28 @@ while true; do
 done
 
 
-DISK="$CALL_DIR/$1"
+disk="$call_dir/$1"
 
-NR_CORES=$((`grep "^processor" /proc/cpuinfo | wc -l` / 2))
+nr_cores=$((`grep "^processor" /proc/cpuinfo | wc -l` / 2))
 if [ $# -gt 1 ]
 then
-	NR_CORES=$2
+	nr_cores=$2
 fi
 
-SZ_RAM=$(( `grep "^MemTotal" /proc/meminfo | awk '{print $2}'` / 4 ))K
+sz_ram=$(( `grep "^MemTotal" /proc/meminfo | awk '{print $2}'` / 4 ))K
 if [ $# -gt 2 ]
 then
-	SZ_RAM=$3
+	sz_ram=$3
 fi
 
-QEMU=./bin/x86_64-softmmu/qemu-system-x86_64
-if [ ! -f $QEMU ]
+qemu=./bin/x86_64-softmmu/qemu-system-x86_64
+if [ ! -f $qemu ]
 then
 	echo "Looks like QEMU not installed.  Do ./install.sh first"
 	exit 1
 fi
 
-$QEMU -m $SZ_RAM -smp $NR_CORES -enable-kvm \
-	-drive if=virtio,file=$DISK,cache=none \
-	-net user,hostfwd=tcp::$SSH_PORT-:22 -net nic \
-	$GRAPHIC $CDROM
+$qemu -m $sz_ram -smp $nr_cores -enable-kvm \
+	-drive if=virtio,file=$disk,cache=none \
+	-net user,hostfwd=tcp::$ssh_port-:22 -net nic \
+	$graphic $cdrom
