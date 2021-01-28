@@ -13,6 +13,7 @@ then
 	echo "  --cdrom         cdrom image"
 	echo "  --monitor	monitor unix domain socket"
 	echo "  --qmp		qmp unix domain socket"
+	echo "  --incoming	migration-listen port"
 	exit 1
 fi
 
@@ -21,6 +22,7 @@ ssh_port=2242
 cdrom=""
 monitor=""
 qmp=""
+incoming=""
 while true; do
 	case $1 in
 	"--graphic")
@@ -50,6 +52,11 @@ while true; do
 		;;
 	"--qmp")
 		qmp="-qmp unix:$2,server,nowait"
+		shift 2
+		continue
+		;;
+	"--incoming")
+		incoming="-incoming tcp:0:$2"
 		shift 2
 		continue
 		;;
@@ -84,4 +91,4 @@ fi
 $qemu -m $sz_ram -smp $nr_cores -enable-kvm \
 	-drive if=virtio,file=$disk,cache=none \
 	-net user,hostfwd=tcp::$ssh_port-:22 -net nic \
-	$graphic $cdrom $monitor $qmp
+	$graphic $cdrom $monitor $qmp $incoming
