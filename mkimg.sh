@@ -1,7 +1,7 @@
 #!/bin/bash
 
-call_dir=`pwd`
-bindir=`dirname $0`
+call_dir=$(pwd)
+bindir=$(dirname $0)
 cd $bindir
 
 if [ $# -ne 2 ]
