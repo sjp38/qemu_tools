@@ -1,7 +1,7 @@
 #!/bin/bash
 
-call_dir=`pwd`
-bindir=`dirname $0`
+call_dir=$(pwd)
+bindir=$(dirname $0)
 cd $bindir
 
 if [ $# -lt 1 ]
@@ -69,13 +69,13 @@ done
 
 disk="$call_dir/$1"
 
-nr_cores=$((`grep "^processor" /proc/cpuinfo | wc -l` / 2))
+nr_cores=$(( $(grep "^processor" /proc/cpuinfo | wc -l) / 2 ))
 if [ $# -gt 1 ]
 then
 	nr_cores=$2
 fi
 
-sz_ram=$(( `grep "^MemTotal" /proc/meminfo | awk '{print $2}'` / 4 ))
+sz_ram=$(( $(grep "^MemTotal" /proc/meminfo | awk '{print $2}') / 4 ))
 if [ $sz_ram -gt 1024 ]
 then
 	sz_ram=$((sz_ram / 1024 * 1024))
