@@ -56,7 +56,7 @@ while true; do
 		continue
 		;;
 	"--incoming")
-		incoming="-incoming tcp:0:$2"
+		incoming="-incoming unix:$2"
 		shift 2
 		continue
 		;;
