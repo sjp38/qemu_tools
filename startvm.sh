@@ -4,8 +4,7 @@ call_dir=$(pwd)
 bindir=$(dirname $0)
 cd $bindir
 
-if [ $# -lt 1 ]
-then
+function pr_usage {
 	echo "Usage: $0 [OPTIONS] <path to disk file> [<nr_cores> [<ram size>]]"
 	echo "  --graphic       start vm in graphic mode"
 	echo "  --curses        start vm in curses mode"
@@ -14,6 +13,12 @@ then
 	echo "  --mon		monitor unix domain socket"
 	echo "  --qmp		qmp unix domain socket"
 	echo "  --incoming	migration-listen port"
+	echo "  -h, --help	print this message"
+}
+
+if [ $# -lt 1 ]
+then
+	pr_usage
 	exit 1
 fi
 
@@ -59,6 +64,10 @@ while true; do
 		incoming="-incoming unix:$2"
 		shift 2
 		continue
+		;;
+	"--help" | "-h")
+		pr_usage
+		exit 0
 		;;
 	*)
 		break
