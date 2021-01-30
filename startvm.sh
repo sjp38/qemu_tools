@@ -22,13 +22,14 @@ then
 	exit 1
 fi
 
+disk_cpu_mem=()
 graphic="-nographic"
 ssh_port="default"
 cdrom=""
 monitor=""
 qmp=""
 incoming=""
-while true; do
+while [ $# -ne 0 ]; do
 	case $1 in
 	"--graphic")
 		graphic="-display gtk"
@@ -70,7 +71,15 @@ while true; do
 		exit 0
 		;;
 	*)
-		break
+		if [ ${#disk_cpu_mem[@]} -gt 3 ]
+		then
+			pr_usage
+			exit 1
+		fi
+
+		disk_cpu_mem+=($1)
+		shift 1
+		continue
 		;;
 	esac
 done
@@ -85,23 +94,25 @@ then
 	fi
 fi
 
-disk="$call_dir/$1"
-
-nr_cores=$(( $(grep "^processor" /proc/cpuinfo | wc -l) / 2 ))
-if [ $# -gt 1 ]
+if [ ${#disk_cpu_mem[@]} -lt 1 ]
 then
-	nr_cores=$2
+	pr_usage
+	exit 1
 fi
 
-sz_ram=$(( $(grep "^MemTotal" /proc/meminfo | awk '{print $2}') / 4 ))
-if [ $sz_ram -gt 1024 ]
+disk="$call_dir/${disk_cpu_mem[0]}"
+
+nr_cores=${disk_cpu_mem[1]}
+if [ "$nr_cores" == "" ]
 then
-	sz_ram=$((sz_ram / 1024 * 1024))
+	nr_cores=$(( $(grep "^processor" /proc/cpuinfo | wc -l) / 2 ))
 fi
-sz_ram+="K"
-if [ $# -gt 2 ]
+
+sz_ram=${disk_cpu_mem[2]}
+if [ "$sz_ram" == "" ]
 then
-	sz_ram=$3
+	sz_ram=$(( $(grep "^MemTotal" /proc/meminfo | awk '{print $2}') / 4 ))
+	sz_ram="$((sz_ram / 1024 * 1024))K"
 fi
 
 qemu=./bin/x86_64-softmmu/qemu-system-x86_64
