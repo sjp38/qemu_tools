@@ -11,7 +11,7 @@ then
 	echo "  --curses        start vm in curses mode"
 	echo "  --sshport       port for ssh server"
 	echo "  --cdrom         cdrom image"
-	echo "  --monitor	monitor unix domain socket"
+	echo "  --mon		monitor unix domain socket"
 	echo "  --qmp		qmp unix domain socket"
 	echo "  --incoming	migration-listen port"
 	exit 1
@@ -45,7 +45,7 @@ while true; do
 		shift 2
 		continue
 		;;
-	"--monitor")
+	"--mon")
 		monitor="-monitor unix:$2,server,nowait"
 		shift 2
 		continue
