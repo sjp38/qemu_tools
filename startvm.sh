@@ -23,7 +23,7 @@ then
 fi
 
 graphic="-nographic"
-ssh_port=2242
+ssh_port="default"
 cdrom=""
 monitor=""
 qmp=""
@@ -75,6 +75,15 @@ while true; do
 	esac
 done
 
+if [ "$ssh_port" == "default" ]
+then
+	if [ "$incoming" == "" ]
+	then
+		ssh_port=2242
+	else
+		ssh_port=2252
+	fi
+fi
 
 disk="$call_dir/$1"
 
