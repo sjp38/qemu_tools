@@ -6,13 +6,13 @@ cd $bindir
 
 function pr_usage {
 	echo "Usage: $0 [OPTIONS] <path to disk file> [<nr_cores> [<ram size>]]"
-	echo "  --graphic       start vm in graphic mode"
-	echo "  --curses        start vm in curses mode"
-	echo "  --sshport       port for ssh server"
-	echo "  --cdrom         cdrom image"
-	echo "  --mon		monitor unix domain socket"
-	echo "  --qmp		qmp unix domain socket"
-	echo "  --incoming	migration-listen port"
+	echo "  --graphic		start vm in graphic mode"
+	echo "  --curses		start vm in curses mode"
+	echo "  --sshport <port>	port for ssh server"
+	echo "  --cdrom <image>		cdrom image"
+	echo "  --mon <sock>		monitor unix domain socket"
+	echo "  --qmp <sock>		qmp unix domain socket"
+	echo "  --incoming <sock>	migration-listen port"
 	echo "  -h, --help	print this message"
 }
 
