@@ -1,8 +1,8 @@
 #!/bin/bash
 
 call_dir=$(pwd)
-bindir=$(dirname $0)
-cd $bindir
+bindir=$(dirname "$0")
+cd "$bindir" || exit 1
 
 if [ $# -ne 2 ]
 then
@@ -13,4 +13,4 @@ fi
 sz_img=$1
 file_path=$call_dir/$2
 
-./bin/qemu-img create -f qcow2 $file_path $sz_img
+./bin/qemu-img create -f qcow2 "$file_path" "$sz_img"
