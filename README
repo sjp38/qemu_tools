@@ -87,6 +87,9 @@ Usage: ./startvm.sh [OPTIONS] <path to disk file> [<nr_cores> [<ram size>]]
               https://www.debian.org/releases/,
               http://releases.ubuntu.com or
               https://dl.fedoraproject.org/pub/fedora/linux/releases/
+`--mon`:      Export qemu monitor to specified unix domain socket.
+`--qmp`:      Export qmp to specified unix domain socket.
+`--incoming`: Start VM as migration incoming mode waiting for specified socket.
 
 
 Author
