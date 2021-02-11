@@ -1,8 +1,6 @@
 #!/bin/bash
 
-call_dir=$(pwd)
 bindir=$(dirname $0)
-cd $bindir
 
 function pr_usage {
 	echo "Usage: $0 [OPTIONS] <path to disk file> [<nr_cores> [<ram size>]]"
@@ -47,7 +45,7 @@ while [ $# -ne 0 ]; do
 		continue
 		;;
 	"--cdrom")
-		cdrom="-cdrom $call_dir/$2"
+		cdrom="-cdrom $2"
 		shift 2
 		continue
 		;;
@@ -100,7 +98,7 @@ then
 	exit 1
 fi
 
-disk="$call_dir/${disk_cpu_mem[0]}"
+disk="${disk_cpu_mem[0]}"
 
 nr_cores=${disk_cpu_mem[1]}
 if [ "$nr_cores" == "" ]
@@ -115,7 +113,7 @@ then
 	sz_ram="$((sz_ram / 1024 * 1024))K"
 fi
 
-qemu=./bin/x86_64-softmmu/qemu-system-x86_64
+qemu="$bindir/bin/x86_64-softmmu/qemu-system-x86_64"
 if [ ! -f $qemu ]
 then
 	echo "Looks like QEMU not installed.  Do ./install.sh first"
