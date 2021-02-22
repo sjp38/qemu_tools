@@ -1,6 +1,6 @@
 #!/bin/bash
 
-bindir=$(dirname $0)
+bindir=$(dirname "$0")
 
 function pr_usage {
 	echo "Usage: $0 [OPTIONS] <path to disk file> [<nr_cores> [<ram size>]]"
@@ -114,13 +114,13 @@ then
 fi
 
 qemu="$bindir/bin/x86_64-softmmu/qemu-system-x86_64"
-if [ ! -f $qemu ]
+if [ ! -f "$qemu" ]
 then
 	echo "Looks like QEMU not installed.  Do ./install.sh first"
 	exit 1
 fi
 
 $qemu -m $sz_ram -smp $nr_cores -enable-kvm \
-	-drive if=virtio,file=$disk,cache=none \
+	-drive if=virtio,file="$disk",cache=none \
 	-net user,hostfwd=tcp::$ssh_port-:22 -net nic \
 	$graphic $cdrom $monitor $qmp $incoming
