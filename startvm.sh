@@ -103,7 +103,7 @@ disk="${disk_cpu_mem[0]}"
 nr_cores=${disk_cpu_mem[1]}
 if [ "$nr_cores" == "" ]
 then
-	nr_cores=$(( $(grep "^processor" /proc/cpuinfo | wc -l) / 2 ))
+	nr_cores=$(( $(nproc) / 2 ))
 fi
 
 sz_ram=${disk_cpu_mem[2]}
