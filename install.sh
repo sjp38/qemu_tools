@@ -17,5 +17,4 @@ git checkout v5.2.0
 mkdir ../bin
 cd ../bin || exit 1
 ../qemu/configure --enable-debug --enable-gtk --enable-curses
-NR_CPUS=$(grep "^processor" /proc/cpuinfo | wc -l)
-make -j"$NR_CPUS"
+make -j"$(nproc)"
