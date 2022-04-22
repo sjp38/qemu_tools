@@ -13,7 +13,7 @@ then
 fi
 cd qemu || exit 1
 git remote update
-git checkout v5.2.0
+git checkout v7.0.0
 
 mkdir ../bin
 cd ../bin || exit 1
