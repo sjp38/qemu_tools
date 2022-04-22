@@ -4,7 +4,8 @@ bindir=$(dirname "$0")
 cd "$bindir" || exit 1
 
 sudo apt install -y libglib2.0-dev libfdt-dev libpixman-1-dev zlib1g-dev \
-	libgtk-3-dev libncurses5-dev libncursesw5-dev ninja-build
+	libgtk-3-dev libncurses5-dev libncursesw5-dev ninja-build \
+	build-essential
 
 if [ ! -d qemu ]
 then
