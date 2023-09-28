@@ -9,7 +9,7 @@ sudo apt install -y libglib2.0-dev libfdt-dev libpixman-1-dev zlib1g-dev \
 
 if [ ! -d qemu ]
 then
-	git clone git://git.qemu-project.org/qemu.git
+	git clone https://gitlab.com/qemu-project/qemu.git
 fi
 cd qemu || exit 1
 git remote update
