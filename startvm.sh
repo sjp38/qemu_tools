@@ -116,8 +116,13 @@ fi
 qemu="$bindir/bin/x86_64-softmmu/qemu-system-x86_64"
 if [ ! -f "$qemu" ]
 then
-	echo "Looks like QEMU not installed.  Do ./install.sh first"
-	exit 1
+	qemu="qemu-system-x86_64"
+	if ! which "$qemu" &> /dev/null
+	then
+		echo "qemu not found"
+		echo "install it via packaging system or ./install.sh"
+		exit 1
+	fi
 fi
 
 $qemu -m $sz_ram -smp $nr_cores -enable-kvm \
